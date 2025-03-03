@@ -46,10 +46,10 @@ builder.Services.AddAuthentication(auth =>
 
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidAudience = "https://localhost:7045/",
-            ValidIssuer = "https://localhost:7045/",
+            ValidAudience = builder.Configuration["AppSettings:Audience"],
+            ValidIssuer = builder.Configuration["AppSettings:Issuer"],
             RequireExpirationTime = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("sdfjsdkfjskdffsdjfsdfkdfjsfksdjfsdj")),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("AppSettings:Key")),
             ValidateIssuerSigningKey = true
         };
     });
